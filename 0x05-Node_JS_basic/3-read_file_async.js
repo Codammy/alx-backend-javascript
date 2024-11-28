@@ -57,10 +57,11 @@ function countStudents(path) {
         let i = 1;
         grp.students.forEach((student) => {
           process.stdout.write(
-            `${student[header[0]]}${i === grp.students.length ? '\n' : ', '}`,
+            `${student[header[0]]}${i === grp.students.length ? '' : ', '}`,
           );
           i += 1;
         });
+        console.log();
       });
       return resolve(stdGrpByField);
     });
