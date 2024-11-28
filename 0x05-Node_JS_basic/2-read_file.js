@@ -37,7 +37,7 @@ function countStudents(path) {
   const stdGrpByField = [];
   uFields.forEach((field) => {
     const grp = students.filter(
-      (std) => std[header[header.length - 1]] === field
+      (std) => std[header[header.length - 1]] === field,
     );
     stdGrpByField.push({
       name: field,
@@ -47,13 +47,13 @@ function countStudents(path) {
 
   stdGrpByField.forEach((grp) => {
     process.stdout.write(
-      `Number of students in ${grp.name}: ${grp.students.length}.`
+      `Number of students in ${grp.name}: ${grp.students.length}.`,
     );
     process.stdout.write(' List: ');
     let i = 1;
     grp.students.forEach((student) => {
       process.stdout.write(
-        `${student[header[0]]}${i === grp.students.length ? '\n' : ', '}`
+        `${student[header[0]]}${i === grp.students.length ? '\n' : ', '}`,
       );
       i += 1;
     });
