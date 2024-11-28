@@ -1,5 +1,5 @@
 const app = require('http');
-const { exec, spawn } = require('node:child_process');
+const { exec } = require('node:child_process');
 // const countStudents = require('./3-read_file_async');
 
 // const countStudents = spawn('node', ['3-read_file_async.js', process.argv[2]]);
@@ -9,7 +9,7 @@ exec(`node 3-read_file_async.js ${process.argv[2]}`, (err, stdout) => {
     console.log(err);
     return;
   }
-  info = stdout;
+  info = stdout.toString();
 });
 // countStudents.stdout.on('data', (data) => {
 //   info = data.toString();
@@ -24,7 +24,7 @@ app
         break;
       case '/students':
         res.write('This is the list of our students\n');
-        res.write(info);
+        res.write(info.trim('\n'));
         // countStudents(process.argv[2]);
         break;
       default:

@@ -32,7 +32,7 @@ function countStudents(path) {
       uFields.push(field);
     }
   });
-  console.log(`Number of students: ${students.length}`);
+  process.stdout.write(`Number of students: ${students.length}\n`);
 
   const stdGrpByField = [];
   uFields.forEach((field) => {
@@ -47,9 +47,9 @@ function countStudents(path) {
 
   stdGrpByField.forEach((grp) => {
     process.stdout.write(
-      `Number of students in ${grp.name}: ${grp.students.length}.`,
+      `Number of students in ${grp.name}: ${grp.students.length}. `,
     );
-    process.stdout.write(' List: ');
+    process.stdout.write('List: ');
     let i = 1;
     grp.students.forEach((student) => {
       process.stdout.write(
