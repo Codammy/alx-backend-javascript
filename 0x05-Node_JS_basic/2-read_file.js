@@ -25,34 +25,39 @@ function countStudents(path) {
     throw new Error('Cannot load the database');
   }
 
-  let fields = students.map((student) => student[header[header.length - 1]])
-  uFields = []
-  fields.forEach((field)=> {
+  const fields = students.map((student) => student[header[header.length - 1]]);
+  const uFields = [];
+  fields.forEach((field) => {
     if (!uFields.includes(field)) {
-      uFields.push(field)
+      uFields.push(field);
     }
-  })
+  });
   console.log(`Number of students: ${students.length}`);
 
-const stdGrpByField = []
-uFields.forEach((field)=>{
-  const grp = students.filter((std)=> std[header[header.length - 1]] == field)
-  stdGrpByField.push({
-    name: field,
-    students: grp
-  })
-})
+  const stdGrpByField = [];
+  uFields.forEach((field) => {
+    const grp = students.filter(
+      (std) => std[header[header.length - 1]] === field
+    );
+    stdGrpByField.push({
+      name: field,
+      students: grp,
+    });
+  });
 
-stdGrpByField.forEach((grp)=> {
-   process.stdout.write(`Number of students in ${grp.name}: ${grp.students.length}.`)
-   process.stdout.write(' List: ')
-   let i = 1;
-   grp.students.forEach((student)=> {
-     process.stdout.write(`${student[header[0]]}${i === grp.students.length ? '\n' : ', '}`)
-     i += 1;
-   })
-})
+  stdGrpByField.forEach((grp) => {
+    process.stdout.write(
+      `Number of students in ${grp.name}: ${grp.students.length}.`
+    );
+    process.stdout.write(' List: ');
+    let i = 1;
+    grp.students.forEach((student) => {
+      process.stdout.write(
+        `${student[header[0]]}${i === grp.students.length ? '\n' : ', '}`
+      );
+      i += 1;
+    });
+  });
 }
 
-countStudents('./database.csv');
 module.exports = countStudents;
