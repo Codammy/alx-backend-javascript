@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "node testing",
   "main": "test.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "test": "mocha"
   },
