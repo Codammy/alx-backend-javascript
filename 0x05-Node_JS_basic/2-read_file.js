@@ -46,11 +46,14 @@ function countStudents(path) {
   });
 
   stdGrpByField.forEach((grp) => {
-    let studentStrList = ''
+    let studentStrList = '';
     let i = 1;
     grp.students.forEach((student) => {
-      studentStrList += `${student[header[0]]}${i === grp.students.length ? '' : ', '}`,
-        i += 1;
+      studentStrList += student[header[0]];
+      if (i < grp.students.length) {
+        studentStrList += ', ';
+      }
+      i += 1;
     });
     console.log(
       `Number of students in ${grp.name}: ${grp.students.length}. List: ${studentStrList}`,
