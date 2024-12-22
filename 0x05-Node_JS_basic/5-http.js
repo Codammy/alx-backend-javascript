@@ -6,7 +6,7 @@ const { exec } = require('node:child_process');
 let info;
 exec(`node 3-read_file_async.js ${process.argv[2]}`, (err, stdout) => {
   if (err) {
-    console.log(err);
+    // console.log(err);
     return;
   }
   info = stdout.toString();
@@ -24,7 +24,7 @@ const app = http
         break;
       case '/students':
         res.write('This is the list of our students\n');
-        res.write(info.trim('\n'));
+        // res.write(info.trim('\n'));
         // countStudents(process.argv[2]);
         break;
       default:
