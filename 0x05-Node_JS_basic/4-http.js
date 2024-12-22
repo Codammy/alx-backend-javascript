@@ -1,8 +1,8 @@
-const app = require('http');
+const http = require('http');
 
-app
+const app = http
   .createServer((req, res) => {
-    res.write('Hello ALX!');
+    res.write('Hello Holberton School!');
 
     res.end();
   })

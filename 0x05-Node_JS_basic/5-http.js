@@ -1,4 +1,4 @@
-const app = require('http');
+const http = require('http');
 const { exec } = require('node:child_process');
 // const countStudents = require('./3-read_file_async');
 
@@ -15,7 +15,7 @@ exec(`node 3-read_file_async.js ${process.argv[2]}`, (err, stdout) => {
 //   info = data.toString();
 // });
 
-app
+const app = http
   .createServer((req, res) => {
     console.log(req.url);
     switch (req.url) {
