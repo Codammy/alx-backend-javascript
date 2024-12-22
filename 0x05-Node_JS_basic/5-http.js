@@ -24,7 +24,7 @@ const app = http
         break;
       case '/students':
         res.write('This is the list of our students\n');
-        // res.write(info.trim('\n'));
+        res.write(info);
         // countStudents(process.argv[2]);
         break;
       default:
