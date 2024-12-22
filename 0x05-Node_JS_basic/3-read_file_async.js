@@ -50,18 +50,18 @@ function countStudents(path) {
       });
 
       stdGrpByField.forEach((grp) => {
-        process.stdout.write(
-          `Number of students in ${grp.name}: ${grp.students.length}.`,
-        );
-        process.stdout.write(' List: ');
+        let studentStrList = '';
         let i = 1;
         grp.students.forEach((student) => {
-          process.stdout.write(
-            `${student[header[0]]}${i === grp.students.length ? '' : ', '}`,
-          );
+          studentStrList += student[header[0]];
+          if (i < grp.students.length) {
+            studentStrList += ', ';
+          }
           i += 1;
         });
-        console.log();
+        console.log(
+          `Number of students in ${grp.name}: ${grp.students.length}. List: ${studentStrList}`,
+        );
       });
       return resolve(stdGrpByField);
     });
