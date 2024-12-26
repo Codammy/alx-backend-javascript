@@ -1,31 +1,28 @@
-const http = require('http');
-const { exec } = require('child_process');
+const http = require("http");
+const { exec } = require("child_process");
 // const countStudents = require('./3-read_file_async');
 
 // const countStudents = spawn('node', ['3-read_file_async.js', process.argv[2]]);
 let info;
-exec(`node 3-read_file_async.js ${process.argv[2]}`, (err, stdout) => {
-  if (err) {
-    // console.log(err);
-    return;
-  }
-  info = stdout.toString();
+const ch = exec(`node 3-read_file_async.js ${process.argv[2]}`);
+
+ch.stderr.on("data", (err) => {
+  info = err.toString().split("\n")[4].split(": ")[1];
 });
-// countStudents.stdout.on('data', (data) => {
-//   info = data.toString();
-// });
+ch.stdout.on("data", (data) => {
+  info = data.toString();
+});
 
 const app = http
   .createServer((req, res) => {
     console.log(req.url);
     switch (req.url) {
-      case '/':
-        res.write('Hello Holberton School!');
+      case "/":
+        res.write("Hello Holberton School!");
         break;
-      case '/students':
-        res.write('This is the list of our students\n');
+      case "/students":
+        res.write("This is the list of our students\n");
         res.write(info);
-        // countStudents(process.argv[2]);
         break;
       default:
         break;
