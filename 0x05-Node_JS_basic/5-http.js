@@ -1,8 +1,6 @@
 const http = require("http");
 const { exec } = require("child_process");
-// const countStudents = require('./3-read_file_async');
 
-// const countStudents = spawn('node', ['3-read_file_async.js', process.argv[2]]);
 let info;
 const ch = exec(`node 3-read_file_async.js ${process.argv[2]}`);
 
