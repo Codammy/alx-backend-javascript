@@ -3,11 +3,9 @@ const { exec } = require('child_process');
 
 const app = http.createServer((req, res) => {
   if (req.url === '/') {
-    // Handle the root route
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello ALX!');
   } else if (req.url === '/students') {
-    // Handle the /students route
     const database = process.argv[2];
 
     if (!database) {
@@ -16,19 +14,18 @@ const app = http.createServer((req, res) => {
       return;
     }
 
-    // Use child process to execute 3-read_file_async.js
     const child = exec(`node 3-read_file_async.js ${database}`);
 
     let output = '';
     let errorOccurred = false;
 
     child.stdout.on('data', (data) => {
-      output += data; // Accumulate output from stdout
+      output += data;
     });
 
     child.stderr.on('data', (error) => {
-      errorOccurred = true; // Mark that an error occurred
-      output += error; // Accumulate error message
+      errorOccurred = true;
+      output += error; 
     });
 
     child.on('close', (code) => {
@@ -41,7 +38,6 @@ const app = http.createServer((req, res) => {
       }
     });
   } else {
-    // Handle unknown routes
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('Not Found');
   }
